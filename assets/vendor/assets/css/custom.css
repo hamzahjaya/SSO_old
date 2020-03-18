@@ -1,0 +1,29 @@
+.headerbar .headerbar-left {
+	background: orange;
+}
+.navbar-custom {
+	background-color: orange;
+}
+.button-menu-mobile:hover {
+	color: #ff7800;
+}
+.notif .noti-title {
+	background-color: orange;
+
+}
+
+#sidebar-menu > ul > li > a.active {
+	color: #ffffff !important;
+    background-color: #e9ecef26;
+	border-left: 2px solid orange;
+}
+
+#sidebar-menu > ul > li > a:hover {
+	border-left: 2px solid orange;
+}
+
+.login{
+	background-color: orange;
+	color: white;
+
+}
