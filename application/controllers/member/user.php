@@ -76,7 +76,7 @@ class User extends CI_Controller
 	public function updatepassword ($id_user = null){
         
 
-		$input['password']  = md5($this->input->post('password'));
+				$input['password']  = md5($this->input->post('password'));
 			   
 		
 				$id_user = stripslashes(strip_tags(htmlspecialchars($id_user, ENT_QUOTES)));
@@ -97,4 +97,4 @@ class User extends CI_Controller
 
 
 
-?>
+?>	
