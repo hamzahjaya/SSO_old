@@ -28,6 +28,8 @@
                                         <th style="text-align:center;width:100%;">nik</th>
                                         <th style="text-align:center;width:100%;">nip</th>
                                         <th style="text-align:center;width:100%;">active</th>
+										<th style="text-align:center;width:100%;">Action</th>
+										
 									</tr>
 								</thead>
 								<tbody style="text-align:justify;width:100%;">
@@ -80,8 +82,8 @@
 										</td>
 										
 										<td>
-											<!--  <a href="<?php echo site_url('admin/products/edit/'.$product->product_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a> -->
+											 <a href="<?php echo site_url('admin/user/edituser/'.$user->id_user) ?>"
+											 class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
 											  <a href="<?php echo site_url('admin/user/deleteuser/'.$user->id_user) ?>"
 											 class="btn btn-small"><i class="fa fa-trash"></i> Hapus</a> 
 										</td>

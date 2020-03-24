@@ -5,6 +5,12 @@
                 <div class="col-md-13">
                     <div class="card">
 					<h2> Daftar Aplikasi </h2>
+					
+					<?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php endif; ?>
                         <div class="card-body"  style="background-color: white">
 						<div class="table-responsive">
 							<table id="example" class="table table-striped table-bordered"  style="width:100%">
@@ -30,7 +36,7 @@
 										</td>
 										<td>
 											 <a href="<?php echo site_url('admin/user/edit/'.$aplikasi->id_aplikasi) ?>"
-											 class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+											 class="btn btn-small"><i class="fa fa-edit"></i> Edit Token</a>
 											 <a href="<?php echo site_url('admin/user/deleteapp/'.$aplikasi->id_aplikasi) ?>"
 											 class="btn btn-small"><i class="fa fa-trash"></i> Delete</a>
 											 

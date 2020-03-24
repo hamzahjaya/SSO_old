@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +47,7 @@
                 </div>
                 <?php
             }
-            ?>
+            ?> 
             <form action="<?php echo base_url('auth/sendMail'); ?>" role="login" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="email" placeholder="email">
@@ -73,7 +70,7 @@
       <div class="row">
         
         <div class="col-xs-12 col-sm-6 col-md-6" style="padding-bottom: 5px">
-          <button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Masuk</button>
+          <button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Password baru</button>
         </div>
       </div>
       

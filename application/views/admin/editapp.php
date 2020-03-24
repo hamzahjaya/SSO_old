@@ -15,25 +15,15 @@
 							Back</a>
                             <div class="card-body">
 						<div class="table-responsive">
-                                        <form action="" method="post" enctype="multipart/form-data">
-                                        <!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
-                                            oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
-
-                                            <input type="hidden" name="id_aplikasi" value="<?php echo $t_master_aplikasi->id_aplikasi?>" />
-
-                                            <div class="form-group">
-                                                <label for="nama_aplikasi">Nama Aplikasi</label>
-                                                <input class="form-control <?php echo form_error('nama_aplikasi') ? 'is-invalid':'' ?>"
-                                                type="text" name="nama_aplikasi" placeholder="nama aplikasi" value="<?php echo $t_master_aplikasi->nama_aplikasi ?>" disabled/>
-                                                <div class="invalid-feedback">
-                                                    <?php echo form_error('nama_aplikasi') ?>
-                                                </div>
-                                            </div>
-
+                        
+                        <form  action="<?= base_url('admin/user/updatetoken/'.$aplikasi[0]['id_aplikasi'])?> " method="POST">
+								    <?php echo form_open('admin/user/updatetoken/'.$_SESSION['id_user']); ?>
+                                    <input type="hidden" name="id_aplikasi" value="<?= $aplikasi[0]['id_aplikasi']?>" />
+       
                                             <div class="form-group">
                                                 <label for="token_aplikasi">Token Lama aplikasi</label>
                                                 <input class="form-control <?php echo form_error('token_aplikasi') ? 'is-invalid':'' ?>"
-                                                type="text" name="token_aplikasi"  placeholder="token_aplikasi" value="<?php echo $t_master_aplikasi->token_aplikasi?>" disabled/>
+                                                type="text" name="token_aplikasi"  placeholder="token_aplikasi" value="<?= $aplikasi[0]['token_aplikasi']?>" disabled/>
                                                 <div class="invalid-feedback">
                                                     <?php echo form_error('token_aplikasi') ?>
                                                 </div>

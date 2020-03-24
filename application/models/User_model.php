@@ -33,7 +33,7 @@ class User_Model extends CI_Model
         $data = [
                 'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'password' => md5($this->input->post('password')),
                 'token'   => $_SESSION['token'],
                 'id_role' => 2,
                 'nama'  => $this->input->post('nama'),
@@ -41,7 +41,8 @@ class User_Model extends CI_Model
                 'no_sk' => $this->input->post('no_sk'),
                 'nik'   => $this->input->post('nik'),
                 'ip'    => $this->input->ip_address(),
-                'nip'   => $this->input->post('nip')
+                'nip'   => $this->input->post('nip'),
+                'active' =>1
         ];
 
         $this->db->insert('t_user', $data);
@@ -161,6 +162,30 @@ class User_Model extends CI_Model
     public function deleteapp($id_aplikasi)
     {
         return $this->db->delete($this->app, array("id_aplikasi" => $id_aplikasi));
+    }
+
+    public function updateadmin($data,$where,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+        return $this->db->affected_rows() > 0;
+    }
+
+    public function updatetoken($data,$where,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+        return $this->db->affected_rows() > 0;
+    }
+
+    public function get($select,$table,$where)
+	 {
+    	$this->db->select($select);
+		$this->db->from($table);
+		if ($where != '') 
+		{
+			$this->db->where($where);
+		}
+		$data_tampil = $this->db->get();
+		return $data_tampil->result_array();
     }
 
 }

@@ -17,6 +17,9 @@ class Waktu extends CI_Controller
 
 		public function index()
 		{
+			if ($this->session->userdata('id_role') != "2") {
+            redirect('', 'refresh');
+        }
 			$where['id_user'] =$_SESSION['id_user'];
 			$data['t_user'] = $this->m_global->get('*','t_user',$where );
 			// print_r($data['t_user']);die;

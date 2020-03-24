@@ -15,10 +15,10 @@
 						<b>Username</b><br><a><?php echo $this->session->userdata('username')?></a>
 					</li>
 					<li class="list-group-item" style="text-align:center">
-						<b>Tanggal Daftar</b><br><a><?php echo tgl_lengkap($this->session->userdata('created_on'))?></a>
+						<b>Tanggal Daftarr</b><br><a><?php echo tgl_lengkap($this->session->userdata('created_on'))?></a>
 					</li>
 					<li class="list-group-item" style="text-align:center">
-						<b>Terakhir Login</b><br><a><?php echo tgl_lengkap($this->session->userdata('last_login'))?></a>
+						<b>Terakhir Loin</b><br><a><?php echo tgl_lengkap($this->session->userdata('last_login'))?></a>
 					</li>
 				</ul>
 			</div>

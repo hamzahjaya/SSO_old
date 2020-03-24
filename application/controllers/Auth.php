@@ -409,22 +409,6 @@ class Auth extends MY_Controller
         }
     }
 
-    private function _do_upload()
-    {
-        $config['upload_path']          = 'assets/upload/images/foto_profil/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 100; //set max size allowed in Kilobyte
-        $config['max_width']            = 1000; // set max width image allowed
-        $config['max_height']           = 1000; // set max height allowed
-        $config['file_name']            = round(microtime(true) * 1000);
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('photo')) {
-            $this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
-            redirect('auth/profile');
-        }
-        return $this->upload->data('file_name');
-    }
     // public function logout()
     // {
     //     $this->session->sess_destroy();
