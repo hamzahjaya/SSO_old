@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +27,7 @@
 }
     </style>
 </head>
-<body class="hold-transition login-page" style="background-image:url(assets/vendor/assets/images/gedung.jpg); background-repeat: no-repeat;background-size: cover;">
+<body class="hold-transition login-page"  style="background-image:url(assets/vendor/assets/images/gedung.jpg); background-repeat: no-repeat;background-size: cover;">
 <div class="login-box" >
     <div class="login-logo">
         <!-- <img src="<?= base_url() ?>/assets/dist/img/gedung.png"> -->
@@ -40,10 +43,19 @@
             <p class="login-box-msg"><b>Komisi Pemilihan Umum Republik Indonesia</b></p>
             <p class="login-box-msg"><b>Permintaan password baru</b></p>
             <?php
-            if ($this->session->flashdata('login')) {
+            if ($this->session->flashdata('email')) {
+                ?>
+                <div class="alert alert-success" role="alert">
+                <?php echo $this->session->flashdata('email');?>
+                </div>
+                <?php
+            }
+            ?>
+             <?php
+            if ($this->session->flashdata('gagal')) {
                 ?>
                 <div class="alert alert-danger" role="alert">
-                    <?= $this->session->flashdata('login'); ?>
+                <?php echo $this->session->flashdata('gagal');?>
                 </div>
                 <?php
             }
@@ -63,7 +75,7 @@
           <button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"> Password baru</button>
           
            </div>
-           <a href="<?php echo base_url('auth/login'); ?>" class="btn btn-primary btn-block btn-flat" > Login</a><br>
+           <a href="<?php echo base_url('login'); ?>" class="btn btn-secondary btn-block btn-flat" > Login</a><br>
      
       </div>
       

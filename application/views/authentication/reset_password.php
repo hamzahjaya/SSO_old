@@ -40,29 +40,29 @@
             <p class="login-box-msg"><b>Komisi Pemilihan Umum Republik Indonesia</b></p>
             <p class="login-box-msg"><b>Permintaan password baru</b></p>
             <h5>Hello <span><?php echo $username; ?></span>, Silakan isi password baru anda.</h5>   
- 
-            <?php echo form_open('authen/Lupa/reset_password/token/'.$token); ?>
-                <div class="input-group mb-3">
-                password baru
-                <input type="password" name="password" value="<?php echo set_value('password'); ?>"/>
-                <div class="input-group-append input-group-text">
-                        <span class="fas fa-envelope"> <?php echo form_error('password'); ?></span>
-                    </div>
-                </div>
-                konfirmasi password
-                <input type="password" name="passconf" value="<?php echo set_value('password'); ?>"/>
-                <div class="input-group-append input-group-text">
-                        <span class="fas fa-envelope"> <?php echo form_error('passconf'); ?></span>
-                    </div>
-                </div>
-                </div>
-      <div class="row">
-        
-        <div class="col-xs-10 col-sm-6 col-md-6" style="padding-bottom: 5px">
-        <input type="submit" name="btnSubmit" value="Reset" /> 
-           </div>
            
-      </div>
+            <?php echo form_open('authen/Lupa/reset_password/token/'.$token); ?>
+           
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="password baru">
+                    <div class="input-group-append input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" name="passconf" placeholder="konfirmasi password">
+                    <div class="input-group-append input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+			<div class="row">
+				
+				<div class="col-xs-12 col-sm-6 col-md-6" style="padding-bottom: 5px">
+					<button type="submit"name="btnSubmit" value="Reset" class="btn btn-secondary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Ubah password</button>
+				</div>
+			</div>
+
+                
       
       
     </form>

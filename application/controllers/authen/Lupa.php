@@ -26,8 +26,8 @@
              $userInfo = $this->m_global->getUserInfoByEmail($clean);  
                
              if(!$userInfo){  
-               $this->session->set_flashdata('sukses', 'email address salah, silakan coba lagi.');  
-               redirect(site_url('auth/login'),'refresh');   
+               $this->session->set_flashdata('gagal', 'email belum terdaftar silahkan hubungi admin SSO');  
+               redirect(site_url('authen/Lupa'),'refresh');   
              }    
                
              //build token   
@@ -48,9 +48,19 @@
                  password anda.</strong><br>';  
              $message .= '<strong>Silakan klik link ini:</strong> ' . $link;         
              $this->email->message($message);
-             $this->email->send();
-             
-             
+             if ($this->email->send())
+             {
+               
+                $this->session->set_flashdata('email', 'Email sudah dikirim Silahkan cek email'); 
+                redirect(site_url('authen/Lupa'),'refresh');
+              //  echo "silahkan cek email <b>" .$this->input->post('email'). '</b> untuk melakukan reset passowrd';
+             } else {
+              $this->session->set_flashdata('gagal', 'Email tidak terdaftar' ); 
+                redirect(site_url('authen/Lupa'),'refresh');
+             }
+             $this->session->set_flashdata('gagal', 'Email tidak terdaftar' ); 
+             redirect(site_url('authen/Lupa'),'refresh');
+        
          }  
          
      }  
@@ -73,7 +83,7 @@
          'token'=>$this->base64url_encode($token)  
        );  
          
-       $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');  
+       $this->form_validation->set_rules('password', 'Password', 'required|min_length[1]');  
        $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');         
          
        if ($this->form_validation->run() == FALSE) {    
