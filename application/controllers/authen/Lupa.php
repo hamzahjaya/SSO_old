@@ -8,8 +8,8 @@
         
     {
         parent::__construct();
-        // $this->load->model("m_global");
-        // $this->load->library('form_validation');
+         $this->load->model("m_global");
+         $this->load->library('form_validation');
       }
    
      public function index()  
@@ -19,7 +19,7 @@
          
          if($this->form_validation->run() == FALSE) {  
              $data['title'] = 'Halaman Reset Password';  
-             $this->load->view('authentication/LupaPassword',$data);  
+             $this->load->view('authentication/Lupa',$data);  
          }else{  
              $email = $this->input->post('email');   
              $clean = $this->security->xss_clean($email);  
@@ -33,39 +33,44 @@
              //build token   
                        
              $token = $this->m_global->insertToken($userInfo->id_user);              
-             $qstring = $this->base_url_encode($token);           
-             $url = site_url() . '/LupaPassword/reset_password/token/' . $qstring;  
+             $qstring = $this->base64url_encode($token);             
+             
+             $url = site_url() . 'authen/Lupa/reset_password/token/' . $qstring;  
              $link = '<a href="' . $url . '">' . $url . '</a>';   
-               
-             $message = '';             
+             
+             $this->load->library('email');
+             $this->email->from('hamzahjayaputrah@Gmail.com', 'Admin SSO');
+             
+             $this->email->to($this->input->post('email'));
+             $this->email->subject("Reset your password");
+              $message = '';             
              $message .= '<strong>Hai, anda menerima email ini karena ada permintaan untuk memperbaharui  
                  password anda.</strong><br>';  
              $message .= '<strong>Silakan klik link ini:</strong> ' . $link;         
-   
-             echo $message; //send this through mail  
-             exit;  
-           
+             $this->email->message($message);
+             $this->email->send();
+             
+             
          }  
          
      }  
    
      public function reset_password()  
      {  
-       $token = $this->base_url_decode($this->uri->segment(4));           
+       $token = $this->base64url_decode($this->uri->segment(5));           
        $cleanToken = $this->security->xss_clean($token);  
          
        $user_info = $this->m_global->isTokenValid($cleanToken); //either false or array();          
          
        if(!$user_info){  
          $this->session->set_flashdata('sukses', 'Token tidak valid atau kadaluarsa');  
-         redirect(site_url('auth/login'),'refresh');   
+         
        }    
    
        $data = array(  
          'title'=> 'Halaman Reset Password ',  
-         'nama'=> $user_info->nama,   
-         'email'=>$user_info->email,   
-         'token'=>$this->base_url_encode($token)  
+         'username'=> $user_info->username,     
+         'token'=>$this->base64url_encode($token)  
        );  
          
        $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');  
@@ -81,7 +86,7 @@
          $cleanPost['password'] = $hashed;  
          $cleanPost['id_user'] = $user_info->id_user;  
          unset($cleanPost['passconf']);          
-         if(!$this->m_account->updatePassword($cleanPost)){  
+         if(!$this->m_global->updatePassword($cleanPost)){  
            $this->session->set_flashdata('sukses', 'Update password gagal.');  
          }else{  
            $this->session->set_flashdata('sukses', 'Password anda sudah  
@@ -91,12 +96,11 @@
        }  
      }  
        
-   public function base_url_encode($data) {   
-    return rtrim(strtr(base_url_encode($data), '+/', '-_'), '=');   
-   }   
-   
-    
-   public function base_url_decode($data) {   
-    return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));   
-   }    
+     public function base64url_encode($data) {   
+      return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');   
+     }   
+     
+     public function base64url_decode($data) {   
+      return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));   
+     }      
  }  

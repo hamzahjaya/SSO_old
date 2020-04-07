@@ -50,7 +50,7 @@ class user extends CI_Controller
             //input data ke table
             $this->user_model->reg();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-            $this->send_email_verification($this->input->post('email'), $_SESSION['token']);
+            $this->send_email_verification($this->input->post('email'), $_SESSION['token'],$this->input->post('password'));
            
             redirect('admin/user');
             
@@ -58,19 +58,15 @@ class user extends CI_Controller
     }
     
 
-    public function send_email_verification($email, $token)
+    public function send_email_verification($email, $token, $password)
     {
         $this->load->library('email');
         $this->email->from('hamzahjayaputrah@Gmail.com', 'Admin SSO');
         $this->email->to($email);
-        $this->email->subject('Aktivasi akun anda');
-        $this->email->message("
-                    Klik untuk Aktivasi Akun
-                    <a href='http://localhost/sso_kpu/verify/$email/$token'>Aktivasi Akun</a>
-                    
-
-                    <B><i>Harap agar password anda di ubah </i></b>
-                    ");
+        $this->email->subject('Akun sso anda');
+        $this->email->message('email anda adalah : '.$email. '<br> Password anda adalah : '.$password. '<br
+        silahkan ubah password anda
+        ');
         $this->email->set_mailtype('html');
         $this->email->send();
     }

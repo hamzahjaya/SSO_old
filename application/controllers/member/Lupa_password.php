@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class GantiPassword extends CI_Controller{
+class Lupa_password extends CI_Controller{
     
     public function __construct()
     {
@@ -34,7 +34,7 @@ class GantiPassword extends CI_Controller{
 
         if($this->form_validation->run() == false) {
             $this->load->view('header', $data);
-            $this->load->view('member/change_password', $data);
+            $this->load->view('member/ganti_password', $data);
             $this->load->view('footer', $data);
         }
         else {

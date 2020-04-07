@@ -113,18 +113,7 @@ class M_global extends CI_Model
 
 		return $this->db->insert($this->_table,$this);
 	}
-	// public function update()
-	// {
-	// 	$post = $this->input->post();
-	// 	$this->username = $_post['username'];
-	// 	$this->token = $_post['token'];
-	// 	$this->nama = $_post['nama'];
-	// 	$this->no_sk = $_post['no_sk'];
-	// 	$this->nik   = $_post['nik'];
-	// 	$this->nip   = $_post['nip'];
 
-	// 	return $this->db->update($this->_table, $this, array('id_user' => $post['id']));
-	// }
 
 	public function update($data,$where,$table){
         $this->db->where($where);
@@ -163,20 +152,18 @@ class M_global extends CI_Model
 		$data_tampil = $this->db->get();
 		return $data_tampil->result_array();
     }
-    public function getUserInfo($id)  
-   {  
-     $q = $this->db->get_where('t_user', array('id_user' => $id), 1);   
-     if($this->db->affected_rows() > 0)
-     {  
-       $row = $q->row();  
-       return $row;  
-     }
-     else
-     {  
-       error_log('no user found getUserInfo('.$id.')');  
-       return false;  
-     }  
-   }  
+	public function getUserInfo($id_user)  
+	{  
+	  $q = $this->db->get_where('t_user', array('id_user' => $id_user), 1);   
+	  if($this->db->affected_rows() > 0){  
+		$row = $q->row();  
+		return $row;  
+	  }else{  
+		error_log('no user found getUserInfo('.$id_user.')');  
+		return false;  
+	  }  
+	}  
+	  
    
   	public function getUserInfoByEmail($email)
   	{  
@@ -193,55 +180,43 @@ class M_global extends CI_Model
      $token = substr(sha1(rand()), 0, 30);   
      $date = date('Y-m-d');  
        
-     $string = array(  
-         'token'=> $token,  
-         'id_user'=>$id_user,  
-         'created'=>$date  
+     $string = array(    
+		 'id_user'=>$id_user,
+		 'token_request' =>$token, 
+         'request_time'=>$date  
        );  
-     $query = $this->db->insert_string('t_token',$string);  
+     $query = $this->db->insert_string('t_log_request_password',$string);  
      $this->db->query($query);  
      return $token . $id_user;  
        
    	}  
    
-  	public function isTokenValid($token)  
-   	{  
-     $tkn = substr($token,0,30);  
-     $uid = substr($token,30);     
-       
-     $q = $this->db->get_where('t_token', array(  
-       'tokens.token' => $tkn,   
-       'tokens.id_user' => $uid), 1);               
-           
-    if($this->db->affected_rows() > 0)
-    {  
-       $row = $q->row();         
-         
-       $created = $row->created;  
-       $createdTS = strtotime($created);  
-       $today = date('Y-m-d');   
-       $todayTS = strtotime($today);  
-         
-       if($createdTS != $todayTS)
-       {  
-         return false;  
-       }  
-         
-       $user_info = $this->getUserInfo($row->id_user);  
-       return $id_user;  
-         
-    }
-     else
-    {  
-       return false;  
-    }  
-       
-    }   
+	   public function isTokenValid($token)  
+	   {  
+		 $tkn = substr($token,0,30);  
+		 $uid = substr($token,30);     
+		   
+		 $q = $this->db->get_where('t_log_request_password', array(  
+		   't_log_request_password.token_request' => $tkn,   
+		   't_log_request_password.id_user' => $uid), 1);               
+			   
+		 if($this->db->affected_rows() > 0){  
+		   $row = $q->row();         
+			  
+			 
+		   $user_info = $this->getUserInfo($row->id_user);  
+		   return $user_info;  
+			 
+		 }else{  
+		   return false;  
+		 }  
+		   
+	   }     
    
     public function updatePassword($post)  
     {    
      $this->db->where('id_user', $post['id_user']);  
-     $this->db->update('users', array('password' => $post['password']));      
+     $this->db->update('t_user', array('password' => $post['password']));      
      return true;  
     }  
      

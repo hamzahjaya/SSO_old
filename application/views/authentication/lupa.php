@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +38,7 @@
         </div>
             <p class="login-box-msg"><b>Single Sign On (SSO)</b></p>
             <p class="login-box-msg"><b>Komisi Pemilihan Umum Republik Indonesia</b></p>
-            <p class="login-box-msg"><b>Silahkan Masuk</b></p>
+            <p class="login-box-msg"><b>Permintaan password baru</b></p>
             <?php
             if ($this->session->flashdata('login')) {
                 ?>
@@ -50,46 +47,43 @@
                 </div>
                 <?php
             }
-            ?>
-            <form action="<?php echo base_url('auth/login'); ?>" role="login" method="post">
+            ?> 
+            <form action="<?php echo base_url('authen/Lupa'); ?>"  method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="email" placeholder="email">
                     <div class="input-group-append input-group-text">
                         <span class="fas fa-envelope"></span>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                    <div class="input-group-append input-group-text">
-                        <span class="fas fa-lock"></span>
-                    </div>
-                </div>
-			<div class="row">
-				
-				<div class="col-xs-12 col-sm-6 col-md-6" style="padding-bottom: 5px">
-					<button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Masuk</button>
-				</div>
-			</div>
-			<a href="<?php echo base_url('authen/Lupa'); ?>"> Permintaan password baru</a><br>
-			
-			
-		</form>
-		
-	</div>
-	<div id="myalert">
-		<?php echo $this->session->flashdata('alert', true); ?>
-	</div>
-	<br>
-	
 
+                </div>
+      <div class="row">
+        
+        <div class="col-xs-10 col-sm-6 col-md-6" style="padding-bottom: 5px">
+          <button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"> Password baru</button>
+          
+           </div>
+           <a href="<?php echo base_url('auth/login'); ?>" class="btn btn-primary btn-block btn-flat" > Login</a><br>
+     
+      </div>
+      
+      
+    </form>
+    
+  </div>
+  <div id="myalert">
+    <?php echo $this->session->flashdata('alert', true); ?>
+  </div>
+  <br>
+  
 
 <script>
-	$(function() {
-		$('input').iCheck({
-			checkboxClass: 'icheckbox_square-blue',
-			radioClass: 'iradio_square-blue',
-			increaseArea: '20%' // optional
-		});
-	});
-	$('#myalert').delay('slow').slideDown('slow').delay(4100).slideUp(600);
+  $(function() {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+  $('#myalert').delay('slow').slideDown('slow').delay(4100).slideUp(600);
 </script>

@@ -115,18 +115,18 @@ class Auth extends MY_Controller
             if($user){
                 $config = [
                     'mailtype'  => 'html',
-                    'charset'   => 'utf-8',
+                    'charset'   => 'iso-8859-1',
                     'protocol'  => 'smtp',
-                    'smtp_host' => 'ssl://smtp.gmail.com',
-                   'smtp_user' => 'gerlbach01@gmail.com',    // Ganti dengan email gmail kamu
-                   'smtp_pass' => '21072310',      // Password gmail kamu
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                   'smtp_user' => 'hamzahjayaputrah@Gmail.com',    // Ganti dengan email gmail kamu
+                   'smtp_pass' => 'Erliza12',      // Password gmail kamu
                    'smtp_port' => 465,
                    'crlf'      => "\r\n",
                    'newline'   => "\r\n"
                ];
 
                $this->load->library('email', $config);
-               $this->email->from('gerlbach01@gmail.com', 'Uji Coba Email KPU');
+               $this->email->from('hamzahjayaputrah@Gmail.com', 'Uji Coba Email KPU');
                $this->email->to($where['email']);
                $this->email->subject('Email Test');
                $this->email->message('Password SIMPAW : '.$password);
@@ -195,35 +195,14 @@ class Auth extends MY_Controller
             $this->template->load('authentication/layout/template', 'authentication/login', $data);
         }
     }
-    // public function login(){
-        
-    //     $email           = stripslashes(strip_tags(htmlspecialchars($this->input->post('email'),ENT_QUOTES)));
-    //     $password       = stripslashes(strip_tags(htmlspecialchars($this->input->post('password'),ENT_QUOTES)));
-        
-    //     $conditions = array(
-    //         'email' => $email,
-    //         'password' => md5($password)
-    //     );
 
-    //     $user = $this->m_global->get('*','t_user',$conditions);
-    //     if (is_array($user) && count($user)==1) {
-
-    //         $this->session->set_userdata($user[0]);
-
-    //         redirect(base_url());
-            
-
-    //     }else{
-
-    //         $this->session->set_flashdata('login', 'Password atau Username Salah !!!');
-    //         redirect(base_url());
-            
-    //     }
-    // }
+    
+    
     public function ganti_password()
     {
+     
+     
         $username = $this->session->userdata['username'];
-
 
         $this->form_validation->set_rules('pw_baru','password baru','required');
         $this->form_validation->set_rules('cpw_baru','password kedua','required|matches[pw_baru]');
@@ -251,129 +230,6 @@ class Auth extends MY_Controller
         $data['get_all_userdata'] = $this->m_global->get('*','t_user',array('id_user' => $_SESSION['id_user'] ));
         $this->template->load('layout/template', 'authentication/profile', $data);
     }
-
-//     public function registration()
-//     {
-      
-//         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[50]');
-//         $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]|max_length[50]');
-//         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[20]');
-//         $this->form_validation->set_rules('confirmpswd', 'Password Confirmation', 'required|matches[password]');  
-//       if ($this->form_validation->run() == false) 
-//       {
-//         $this->load->view('authentication/register',$data);
-//       }
-//       else {
-//         $first_name = $_POST['first_name'];
-//         $last_name = $_POST['last_name'];
-//         $email = $_POST['email'];
-//         $password = $_POST['password'];
-//         $passhash = hash('md5',$password);
-//         $saltid = md5($email);
-//         $status = 0;
-//         $data  = array('first_name' =>$first_name ,
-//                        'last_name ' => $last_name ,
-//                        'email '     => $email ,
-//                        'password'   => $password,
-//                        'status '    => $status );
-//         if($this->Auth_model->reg($data))
-//         {
-//             if($this->sendemail($email,$saltid))
-//             {
-//                  $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Please confirm the mail sent to your email id to complete the registration.</div>');  
-//            redirect(base_url('auth/login','refresh',$data));  
-//             }
-//             else
-//             {
-//                   $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Please try again ...</div>');  
-//            redirect(base_url('auth/login','refresh',$data));  
-//             }
-//         }
-//         else
-//         {
-//              $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Something Wrong. Please try again ...</div>');  
-//             redirect(base_url('auth/login','refresh',$data));  
-//         }
-//     }
-// }
-//     public function sendemail($email,$saltid)
-//     {  
-//     // configure the email setting  
-//       $config['protocol'] = 'smtp';  
-//       $config['smtp_host'] = 'ssl://smtp.gmail.com'; //smtp host name  
-//       $config['smtp_port'] = '465'; //smtp port number  
-//       $config['smtp_user'] = 'noviayolanda222@gmail.com';  
-//       $config['smtp_pass'] = '********'; //$from_email password  
-//       $config['mailtype'] = 'html';  
-//       $config['charset'] = 'iso-8859-1';  
-//       $config['wordwrap'] = TRUE;  
-//       $config['newline'] = "\r\n"; //use double quotes  
-//      $this->email->initialize($config);  
-//          $url = base_url()."user/confirmation/".$saltid;  
-//     $this->email->from('noviayolanda222@gmail.com', 'CodesQuery');  
-//     $this->email->to($email);   
-//     $this->email->subject('Please Verify Your Email Address');  
-//     $message = "<html><head><head></head><body><p>Hi,</p><p>Thanks for registration with CodesQuery.</p><p>Please click below link to verify your email.</p>".$url."<br/><p>Sincerely,</p><p>CodesQuery Team</p></body></html>";  
-//     $this->email->message($message);  
-//     return $this->email->send();  
-//    }  
-//     public function confirmation($key)  
-//     {  
-//      if($this->Auth_model->verifyemail($key))  
-//       {  
-//         $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Your Email Address is successfully verified!</div>');  
-//         redirect(base_url());  
-//       }  
-//      else  
-//       {  
-//         $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Your Email Address Verification Failed. Please try again later...</div>');  
-//         redirect(base_url());  
-//       }  
-//     }  
-    
-
-    // public function updateProfile()
-    // {
-    //     $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[15]');
-    //     $this->form_validation->set_rules('first_name', 'Nama Depan', 'trim|required|min_length[2]|max_length[15]');
-    //     $this->form_validation->set_rules('last_name', 'Nama Belakang', 'trim|required|min_length[2]|max_length[15]');
-    //     $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[8]|max_length[50]');
-    //     $this->form_validation->set_rules('phone', 'Telp', 'trim|required|min_length[11]|max_length[12]');
-
-    //     $id = $this->session->userdata('id');
-    //     $data = array(
-    //         'username' => $this->input->post('username'),
-    //         'first_name' => $this->input->post('first_name'),
-    //         'last_name' => $this->input->post('last_name'),
-    //         'email' => $this->input->post('email'),
-    //         'phone' => $this->input->post('phone'),
-    //     );
-    //     if ($this->form_validation->run() == true) {
-    //         if (!empty($_FILES['photo']['name'])) {
-    //             $upload = $this->_do_upload();
-
-    //             //delete file
-    //             $user = $this->Auth_model->get_by_id($this->session->userdata('id'));
-    //             if (file_exists('assets/upload/images/foto_profil/'.$user->photo) && $user->photo) {
-    //                 unlink('assets/upload/images/foto_profil/'.$user->photo);
-    //             }
-
-    //             $data['photo'] = $upload;
-    //         }
-    //         $result = $this->Auth_model->update($data, $id);
-    //         if ($result > 0) {
-    //             $this->updateProfil();
-    //             $this->session->set_flashdata('msg', show_succ_msg('Data Profile Berhasil diubah, silakan lakukan login ulang!'));
-    //             redirect('auth/profile');
-    //         } else {
-    //             $this->session->set_flashdata('msg', show_err_msg('Data Profile Gagal diubah'));
-    //             redirect('auth/profile');
-    //         }
-    //     } else {
-    //         $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-    //         redirect('auth/profile');
-    //     }
-    // }
 
     public function updatePassword()
     {
@@ -409,11 +265,7 @@ class Auth extends MY_Controller
         }
     }
 
-    // public function logout()
-    // {
-    //     $this->session->sess_destroy();
-    //     redirect('auth/login');
-    // }
+   
     public function logout()
     {
         date_default_timezone_set("ASIA/JAKARTA");
@@ -424,14 +276,7 @@ class Auth extends MY_Controller
         redirect(base_url());
     }
 
-    //  public function register()
-    // {   
-
-    //     $site = $this->Konfigurasi_model->listing();
-    //     $data  = array('
-    //         title' =>'Register |'$site['sso_old'] , 'favicon'=>$site['favicon'], 'site' =>$site);
-    //     $this->load->view('authentication/register');
-    // }
+   
     public function ubahprofile()
     {
         $this->load->view('authentication/profile');
