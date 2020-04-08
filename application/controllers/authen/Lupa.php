@@ -39,7 +39,7 @@
              $link = '<a href="' . $url . '">' . $url . '</a>';   
              
              $this->load->library('email');
-             $this->email->from('hamzahjayaputrah@Gmail.com', 'Admin SSO');
+             $this->email->from('ssokpu2020@gmail.com', 'Admin SSO');
              
              $this->email->to($this->input->post('email'));
              $this->email->subject("Reset your password");

@@ -61,7 +61,7 @@ class user extends CI_Controller
     public function send_email_verification($email, $token, $password)
     {
         $this->load->library('email');
-        $this->email->from('hamzahjayaputrah@Gmail.com', 'Admin SSO');
+        $this->email->from('ssokpu2020@gmail.com', 'Admin SSO');
         $this->email->to($email);
         $this->email->subject('Akun sso anda');
         $this->email->message('email anda adalah : '.$email. '<br> Password anda adalah : '.$password. '<br
