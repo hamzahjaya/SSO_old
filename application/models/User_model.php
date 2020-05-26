@@ -188,5 +188,16 @@ class User_Model extends CI_Model
 		return $data_tampil->result_array();
     }
 
+    public function lihatmintapassword()
+    {
+    
+             $this->db->select('*');
+            return $this->db->from('t_user')
+              ->join('t_log_request_password', 't_log_request_password.id_user=t_user.id_user')
+              ->get()
+              ->result();
+        
+    }
+
 }
 ?>

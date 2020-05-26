@@ -218,7 +218,8 @@ class M_global extends CI_Model
      $this->db->where('id_user', $post['id_user']);  
      $this->db->update('t_user', array('password' => $post['password']));      
      return true;  
-    }  
+	}
+	  
      
 }
 

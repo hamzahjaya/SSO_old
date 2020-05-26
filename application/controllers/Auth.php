@@ -179,10 +179,22 @@ class Auth extends MY_Controller
             $error = $this->check_account();
 
             if ($this->form_validation->run() && $error) {
+                $this->load->model('Log_model');
+			    $params = array(
+                            'id_log' => $this->session->userdata('id'),
+                            'username' => $this->session->userdata('username'),
+                            
+							'keterangan' => 'successfully login',
+							'ip' =>  $_SERVER['REMOTE_ADDR'],
+							'waktu' =>date("Y-m-d H:i:s"),
+							
+					);
+			    $this->Log_model->add_log($params);
                 $data = $this->Auth_model->check_account($this->input->post('email'), $this->input->post('password'));
                 
                 //jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
                 if ($data->id_role == '1') {
+                 
                     redirect('admin/home');
                 } elseif ($data->id_role == '2') {
                     redirect('member/home');

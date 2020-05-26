@@ -9,6 +9,7 @@ class user extends CI_Controller
 
         
         $this->load->model('user_model');
+        $this->load->model('log_model');
         $this->load->library('form_validation');
         $this->load->helper(array('url','form'));
 
@@ -335,6 +336,30 @@ class user extends CI_Controller
     redirect(base_url('admin/user/list'));
     }
 
+    public function lihatmintapassword()
+    {
+   
+    if ($this->session->userdata('id_role') != "1") {
+        redirect('', 'refresh');
+    }
+    
+    $data["hasil"] = $this->user_model->lihatmintapassword();
 
+    $this->template->load('layouta/template', 'admin/lihatmintapassword', $data);
+    }
+
+    public function log($start=0){
+		$limit = 10;
+        $data['log'] = $this->log_model->get_limit_log($limit,$start);
+		//pagination
+		$config['base_url'] = site_url('admin/log/index');
+		$config['total_rows'] = $this->log_model->get_count_log();
+		$config['per_page'] = 10;
+		//Bootstrap 4 Pagination fix
+		
+      
+       
+         $this->template->load('layouta/template', 'admin/logaktifitas', $data);
+    }
 
 }
