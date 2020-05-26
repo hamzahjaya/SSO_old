@@ -21,7 +21,7 @@
 						<b>Terakhir login</b><br><a><?php echo $get_all_userdata[0]['last_login'];?></a>
 					</li>
 					<li class="list-group-item" style="text-align:center">
-						<b>Tanggal Daftar</b><br><a><?php echo $get_all_userdata[0]['last_logout'];?></a>
+						<b>terakhir daftar</b><br><a><?php echo $get_all_userdata[0]['last_logout'];?></a>
 					</li>
 				</ul>
 			</div>
