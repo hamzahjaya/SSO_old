@@ -16,10 +16,14 @@ class Auth extends MY_Controller
     {
         $user = $this->input->get('u');
         $pass = $this->input->get('p');
+        $token_aplikasi = $this->input->get('t');
 
         $respone = array(
+            'login' => 'sukses',
             'nama_user' => $user,
-            'password' => $pass
+            'nama'=> $nama,
+            'wilayah_kerja' => $wilayah_kerja,
+            'token_aplikasi' => $token_aplikasi
         );
 
         echo json_encode($respone);

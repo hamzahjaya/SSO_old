@@ -24,9 +24,22 @@ class Home extends MY_Controller
             'favicon'               => $site['favicon'],
             'site'                  => $site,
         );
+        $this->load->library('user_agent');
 
+        $data['browser'] = $this->agent->browser();
+      
+        $data['browser_version'] = $this->agent->version();
+      
+        $data['os'] = $this->agent->platform();
+      
+        $data['ip_address'] = $this->input->ip_address();
+        
+        var_dump ($data);
+        die;
         $this->load->helper('string');
         $this->template->load('layouta/template', 'admin/dashboard', $data);
+       
+
     }
 
 
