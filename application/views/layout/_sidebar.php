@@ -61,18 +61,7 @@
         <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li>
        </ul>
        
-      <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Setting</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-        <ul class="treeview-menu">
-          <li><a href="<?=base_url('member/user/edit/'.$_SESSION['id_user'])?>">Ubah Data Diri</a></li>
-          <li><a href="#">Ubah Password</a></li>
-          <li><a href="<?php echo base_url() ?>auth/logout">LogOut</a></li>
-        </ul>
-      </li>
+      
     </ul>
     <!-- /.sidebar-menu -->
   </section>
