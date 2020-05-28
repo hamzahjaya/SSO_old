@@ -15,7 +15,7 @@ class Aplikasi extends CI_Controller
 
 		public function index()
 		{
-			if ($this->session->userdata('id_role') != "2") {
+			if ($this->session->userdata('role') != "user") {
             redirect('', 'refresh');
         }
 			$data['t_master_aplikasi'] = $this->m_global->aplikasi()->result();

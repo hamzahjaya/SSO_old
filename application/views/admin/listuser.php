@@ -13,33 +13,30 @@
 							<table class="table table-bordered datatables"  id="book-table" style="width:100%">
 								<thead >
 									<tr>
-										<th style="text-align:center;width:100%;">ID user</th>
-										<th style="text-align:center;width:100%;">ID role</th>
-										<th style="text-align:center;width:100%;">Username</th>
-										<th style="text-align:center;width:100%;">Email</th>
-										<th style="text-align:center;width:100%;">password</th>
-                                        <th style="text-align:center;width:100%;">token</th>
-                                        <th style="text-align:center;width:100%;">last login</th>
-                                        <th style="text-align:center;width:100%;">last logout</th>
-                                        <th style="text-align:center;width:100%;">Ip addres</th>
-                                        <th style="text-align:center;width:100%;">Nama</th>
-										<th style="text-align:center;width:100%;">no hp</th>
-                                        <th style="text-align:center;width:100%;">No SK</th>
-                                        <th style="text-align:center;width:100%;">nik</th>
-                                        <th style="text-align:center;width:100%;">nip</th>
-                                        <th style="text-align:center;width:100%;">active</th>
-										<th style="text-align:center;width:100%;">Action</th>
+										<th>no</th>	
+										<th>role</th>
+										<th>Username</th>
+										<th>Email</th>
+                                        <th>Nama</th>
+										<th>no hp</th>
+                                        <th>nik</th>
+                                        <th>nip</th>
+                                        <th>active</th>
+										<th>Action</th>
 										
 									</tr>
 								</thead>
 								<tbody style="text-align:justify;width:100%;">
-									<?php foreach ($t_user as $user): ?>
+									<?php 
+									$i = 1;
+									foreach ($t_user as $user): ?>
 									<tr>
-										<td width="150">
-											<?php echo $user->id_user ?>
+									
+									<td>
+											<?php echo $i ?>
 										</td>
 										<td>
-											<?php echo $user->id_role ?>
+											<?php echo $user->role ?>
 										</td>
                                         <td>
 											<?php echo $user->username ?>
@@ -47,30 +44,16 @@
                                         <td>
 											<?php echo $user->email ?>
 										</td>
-                                        <td>
-											<?php echo $user->password ?>
-										</td>
-                                        <td>
-											<?php echo $user->token ?>
-										</td>
-                                        <td>
-											<?php echo $user->last_login ?>
-										</td>
-                                        <td>
-											<?php echo $user->last_logout ?>
-										</td>
-                                        <td>
-											<?php echo $user->ip ?>
-										</td>
+                                        
+                                        
+                                        
                                         <td>
 											<?php echo $user->nama ?>
 										</td>
 										<td>
 											<?php echo $user->no_hp ?>
 										</td>
-                                        <td>
-											<?php echo $user->no_sk ?>
-										</td>
+                                        
                                         <td>
 											<?php echo $user->nik ?>
 										</td>
@@ -88,7 +71,9 @@
 											 class="btn btn-small"><i class="fa fa-trash"></i> Hapus</a> 
 										</td>
 									</tr>
-                                                <?php endforeach; ?>
+												<?php 
+											$i++;
+											endforeach; ?>
 
                                             </tbody>
                                         </table>
