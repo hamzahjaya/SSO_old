@@ -12,6 +12,9 @@ class Auth extends MY_Controller
 
     }
 
+    
+
+
     public function testinglogin()
     {
         $user = $this->input->get('u');
