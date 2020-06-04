@@ -43,9 +43,10 @@
               </span>
             </a>
         <ul class="treeview-menu">
+        <li><a href="<?=base_url('member/user/log')?>">Log Aktifitas</a></li>
         <li><a href="<?=base_url('member/user')?>">User</a></li>
-        <li><a href="<?=base_url('member/waktu')?>">Waktu</a></li>
-        <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li>
+        <!-- <li><a href="<?=base_url('member/waktu')?>">Waktu</a></li>
+        <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li> -->
         </ul>
       </li>
       <li class="treeview">
@@ -56,9 +57,9 @@
               </span>
             </a>
         <ul class="treeview-menu">
-        <li><a href="<?=base_url('member/user')?>">User</a></li>
-        <li><a href="<?=base_url('member/waktu')?>">Waktu</a></li>
-        <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li>
+        <li><a href="<?=base_url('user/log')?>">User</a></li>
+        <!-- <li><a href="<?=base_url('member/waktu')?>">Waktu</a></li>
+        <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li> -->
        </ul>
        
       

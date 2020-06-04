@@ -11,14 +11,10 @@
 									<tr class="table-success">
 										<th>username</th>
 										<th>email </th>
-										<th>password</th>
 										<th>last login</th>
 										<th>last logout</th>
-										<th>ip</th>
 										<th>nama</th>
-										<th>no sk</th>
-										<th>nik</th>
-										<th>nip</th>
+										<th>Aplikasi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -31,29 +27,18 @@
 											<?php echo $user->email ?>
 										</td>
 										<td>
-											<?php echo $user->password ?>
-										</td>
-										<td>
 											<?php echo $user->last_login ?>
 										</td>
 										<td>
 											<?php echo $user->last_logout ?>
 										</td>
 										<td>
-											<?php echo $user->ip ?>
-										</td>
-										<td>
 											<?php echo $user->nama ?>
 										</td>
 										<td>
-											<?php echo $user->no_sk ?>
+											<?php echo $user->aplikasi ?>
 										</td>
-										<td>
-											<?php echo $user->nik ?>
-										</td>
-										<td>
-											<?php echo $user->nip ?>
-										</td>
+										
 										<td>
 											<a href="<?php echo site_url('member/edit/'.$user->id_user) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>

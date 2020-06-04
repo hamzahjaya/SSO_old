@@ -11,7 +11,9 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->model("m_global");
+        $this->load->model('log_model');
         $this->load->library('form_validation');
+        $this->load->helper(array('url','form'));
       
 	}       
 
@@ -88,7 +90,22 @@ class User extends CI_Controller
 		
 				$this->session->set_flashdata('success','password Berhasil diubah');
 				redirect(base_url('member/user'));
-				} 	
+	} 
+    public function log($start=0){
+		$limit = 10;
+        $data['log'] = $this->log_model->get_limit_log($limit,$start);
+		//pagination
+		$config['base_url'] = site_url('user/log/index');
+		$config['total_rows'] = $this->log_model->get_count_log();
+		$config['per_page'] = 10;
+		//Bootstrap 4 Pagination fix
+		
+      
+       
+         $this->template->load('layout/template', 'member/logaktifitas', $data);
+         
+    }
+	
 }
 
 	
