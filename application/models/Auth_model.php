@@ -20,6 +20,24 @@ class Auth_model extends CI_Model
         return $query->row_array();
 
     }
+    
+    //join token aplikasi
+    public function login_api($email,$password,$token_aplikasi){
+
+        $this->db->select('
+         id_user,username,email,password,nama,role,token,nama_aplikasi,token_aplikasi
+         ');
+         $this->db->join('t_master_aplikasi', 't_master_aplikasi.id_aplikasi = t_master_aplikasi.id_aplikasi');
+         
+        
+         $this->db->from($this->table);
+         $query = $this->db->get();
+         return $query->row();
+
+        // $query = $this->db->query("SELECT * FROM `t_user` WHERE `email` = '$email' AND `password` = '$password'");
+        //  return $query->result_array();
+    }
+
     public function registration($data)
     {
         return $this->db->insert('t_user',$data);

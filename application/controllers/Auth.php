@@ -15,23 +15,32 @@ class Auth extends MY_Controller
     
 
 
-    public function testinglogin()
-    {
-        $user = $this->input->get('u');
-        $pass = $this->input->get('p');
-        $token_aplikasi = $this->input->get('t');
+    // public function testinglogin()
+    // {
+    //     $user = $this->input->get('u');
+    //     $pass = $this->input->get('p');
+    //     $token_aplikasi = $this->input->get('t');
 
-        $respone = array(
-            'login' => 'sukses',
-            'nama_user' => $user,
-            'nama'=> $nama,
-            'wilayah_kerja' => $wilayah_kerja,
-            'token_aplikasi' => $token_aplikasi
-        );
+    //     $respone = array(
+    //         'login' => 'sukses',
+    //         'nama_user' => $user,
+    //         'nama'=> $nama,
+    //         'wilayah_kerja' => $wilayah_kerja,
+    //         'token_aplikasi' => $token_aplikasi
+    //     );
 
-        echo json_encode($respone);
-    }
+    //     echo json_encode($respone);
+    // }
 
+    // public function login_api()
+    // {
+    //     $email = $this->input->get('email');
+    //     $password = $this->input->get('password');
+    //     $token_aplikasi = $this->input->get('token_aplikasi');
+
+    //     $query = $this->Auth_model->login_api($email,$password,$token_aplikasi);
+    //     echo json_encode ($query);
+    // }
     public function check_account()
     {
         //validasi login

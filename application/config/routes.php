@@ -12,7 +12,7 @@ $route['logout'] = 'Auth/logout';
 $route['verify/(:any)/(:any)'] = 'Auth/verify_register/$1/$2';
 
 $route['verify/(:any)/(:any)'] = 'Auth/verify_register/$1/$2';
-
+$route['api/User/login'] = 'api/User/login';
 $route['default_controller'] = 'auth/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
