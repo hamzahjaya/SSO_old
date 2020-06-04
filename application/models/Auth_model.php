@@ -28,8 +28,9 @@ class Auth_model extends CI_Model
          id_user,username,email,password,nama,role,token,nama_aplikasi,token_aplikasi
          ');
          $this->db->join('t_master_aplikasi', 't_master_aplikasi.id_aplikasi = t_master_aplikasi.id_aplikasi');
-         
-        
+         $this->db->where('email', $email);
+         $this->db->where('password', md5($password));
+         $this->db->where('token_aplikasi', $token_aplikasi);
          $this->db->from($this->table);
          $query = $this->db->get();
          return $query->row();

@@ -40,12 +40,12 @@ require APPPATH . 'libraries/Format.php';
                     // Check if any user exists with the given credentials
                     
                     $user = array(
-                        
                         'email' => $email,
                         'password' => $password,
                         'token_aplikasi' => $token_aplikasi
                         
                     );
+                    
                     $user = $this->Auth_model->login_api($email,$password,$token_aplikasi);
                     // $user = $this->user->getRows($con);
                     
@@ -59,7 +59,11 @@ require APPPATH . 'libraries/Format.php';
                     }else{
                         // Set the response and exit
                         //BAD_REQUEST (400) being the HTTP response code
-                        $this->response("Wrong email or password and token aplikasi", REST_Controller::HTTP_BAD_REQUEST);
+                        $this->response([
+                            'status' => FALSE,
+                            'message' => 'User login Gagal cek kembali.',
+                            'data' => $user
+                        ], REST_Controller::HTTP_OK);
                     }
                 }else{
                     // Set the response and exit
