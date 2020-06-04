@@ -64,7 +64,7 @@ class Auth_model extends CI_Model
     public function get_by_id($id)
     {
         $this->db->select('
-            t_user.*, id_role,
+            t_user.*, role,
             ');
         $this->db->join('t_role', 't_user.id_role = t_role.id');
         $this->db->from($this->table);

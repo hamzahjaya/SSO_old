@@ -19,7 +19,7 @@ class user extends CI_Controller
     public function index()
     {
         
-        if ($this->session->userdata('id_role') != "1") {
+        if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
 
@@ -74,7 +74,7 @@ class user extends CI_Controller
 
     public function verify_register($email, $token)
     {
-         if ($this->session->userdata('id_role') != "1") {
+         if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
 
@@ -102,7 +102,7 @@ class user extends CI_Controller
     public function list()
     {
         
-        if ($this->session->userdata('id_role') != "1") {
+        if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
         
@@ -123,7 +123,7 @@ class user extends CI_Controller
     public function aplikasi()
     {
        
-        if ($this->session->userdata('id_role') != "1") {
+        if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
         $data['user'] = $this->user_model->get_user('id_user', $_SESSION['id_user']);
@@ -135,7 +135,7 @@ class user extends CI_Controller
     public function tambahapp()
     {
 
-        if ($this->session->userdata('id_role') != "1") {
+        if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
         $this->form_validation->set_rules('nama_aplikasi', 'Nama_aplikasi', 'required');
@@ -161,7 +161,7 @@ class user extends CI_Controller
         public function listapp()
         {
        
-        if ($this->session->userdata('id_role') != "1") {
+        if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
         
@@ -186,7 +186,7 @@ class user extends CI_Controller
     public function edit($id = null)
     {
 
-        if ($this->session->userdata('id_role') != "1") {
+        if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
       
@@ -232,7 +232,7 @@ class user extends CI_Controller
 
     public function editadmin($id = null)
 		{
-         if ($this->session->userdata('id_role') != "1") {
+         if ($this->session->userdata('role') != "admin") {
                 redirect('', 'refresh');
             }
         
@@ -295,7 +295,7 @@ class user extends CI_Controller
         
     public function edituser($id = null)
     {
-     if ($this->session->userdata('id_role') != "1") {
+     if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
       
@@ -339,7 +339,7 @@ class user extends CI_Controller
     public function lihatmintapassword()
     {
    
-    if ($this->session->userdata('id_role') != "1") {
+    if ($this->session->userdata('role') != "admin") {
         redirect('', 'refresh');
     }
     

@@ -17,7 +17,7 @@ class Waktu extends CI_Controller
 
 		public function index()
 		{
-			if ($this->session->userdata('id_role') != "2") {
+			if ($this->session->userdata('role') != "user") {
             redirect('', 'refresh');
         }
 			$where['id_user'] =$_SESSION['id_user'];
@@ -39,7 +39,7 @@ class Waktu extends CI_Controller
         $input['nip']      = $this->input->post('nip');
 
        
-        $input['id_role']      = "2";
+        $input['role']      = "user";
        
 
         $simpan = $this->m_global->input_data($input,'t_user');

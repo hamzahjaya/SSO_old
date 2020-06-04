@@ -12,14 +12,21 @@ class Auth extends MY_Controller
 
     }
 
+    
+
+
     public function testinglogin()
     {
         $user = $this->input->get('u');
         $pass = $this->input->get('p');
+        $token_aplikasi = $this->input->get('t');
 
         $respone = array(
+            'login' => 'sukses',
             'nama_user' => $user,
-            'password' => $pass
+            'nama'=> $nama,
+            'wilayah_kerja' => $wilayah_kerja,
+            'token_aplikasi' => $token_aplikasi
         );
 
         echo json_encode($respone);
@@ -73,7 +80,7 @@ class Auth extends MY_Controller
               'is_login'    => true,
               'id_user'     => $query->id_user,
               'password'    => $query->password,
-              'id_role'     => $query->id_role,
+              'role'     => $query->role,
               'username'    => $query->username,
               'email'       => $query->email,
               'token'       => $query->token,
@@ -163,10 +170,10 @@ class Auth extends MY_Controller
             'site'      => $site
         );
         //melakukan pengalihan halaman sesuai dengan levelnya
-        if ($this->session->userdata('id_role') == "1") {
+        if ($this->session->userdata('role') == "admin") {
             redirect('admin/home');
         }
-        if ($this->session->userdata('id_role') == "2") {
+        if ($this->session->userdata('role') == "user") {
             redirect('member/home');
         }
 
@@ -193,10 +200,10 @@ class Auth extends MY_Controller
                 $data = $this->Auth_model->check_account($this->input->post('email'), $this->input->post('password'));
                 
                 //jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
-                if ($data->id_role == '1') {
+                if ($data->role == 'admin') {
                  
                     redirect('admin/home');
-                } elseif ($data->id_role == '2') {
+                } elseif ($data->role == 'user') {
                     redirect('member/home');
                 }
             } else {
