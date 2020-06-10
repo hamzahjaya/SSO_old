@@ -24,7 +24,7 @@ class user extends CI_Controller
         }
 
       $data['user'] = $this->user_model->get_user('id_user', $_SESSION['id_user']);
-      
+    //   var_dump($data['id_user']);die;
       $this->template->load('layouta/template', 'admin/register', $data);
        
     }  
@@ -126,7 +126,7 @@ class user extends CI_Controller
         if ($this->session->userdata('role') != "admin") {
             redirect('', 'refresh');
         }
-        $data['user'] = $this->user_model->get_user('id_user', $_SESSION['id_user']);
+        $data['t_user'] = $this->user_model->get_user('id_user', $_SESSION['id_user']);
       
      
         $this->template->load('layouta/template', 'admin/aplikasi', $data);

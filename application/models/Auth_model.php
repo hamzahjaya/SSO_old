@@ -25,7 +25,7 @@ class Auth_model extends CI_Model
     public function login_api($email,$password,$token_aplikasi){
 
         $this->db->select('
-         id_user,username,email,password,nama,role,token,nama_aplikasi,token_aplikasi
+         id_user,username,email,password,nama,role,token_aplikasi
          ');
          $this->db->join('t_master_aplikasi', 't_master_aplikasi.id_aplikasi = t_master_aplikasi.id_aplikasi');
          $this->db->where('email', $email);

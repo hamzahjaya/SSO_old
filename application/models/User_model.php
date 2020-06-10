@@ -35,7 +35,7 @@ class User_Model extends CI_Model
                 'email' => $this->input->post('email'),
                 'password' => md5($this->input->post('password')),
                 'token'   => $_SESSION['token'],
-                'id_role' => 2,
+                'role' => $this->input->post('role'),
                 'nama'  => $this->input->post('nama'),
                 'no_hp' => $this->input->post('no_hp'),
                 'no_sk' => $this->input->post('no_sk'),

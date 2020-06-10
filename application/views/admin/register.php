@@ -16,7 +16,7 @@
 			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 			<?php echo form_error('Username','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
-
+				
         <div class="form-group has-feedback">
 			<input type="email" name="email" class="form-control" required placeholder="Email">
 			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -66,6 +66,13 @@
 			<input type="text" name="nip" class="form-control" required placeholder="nip">
 			<span class="glyphicon glyphicon-book form-control-feedback"></span>
 			<?php echo form_error('nip','<div class="text-danger"><small>','</small></div>') ;?>
+		</div>
+		<div class="form-group has-feedback"> Role
+			<select id="role" name="role">
+			<option value="admin">admin</option>
+			<option value="user">user</option>
+			</select>
+			<?php echo form_error('Username','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
 
 		<div class="row">
