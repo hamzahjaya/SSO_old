@@ -11,7 +11,7 @@ class User extends REST_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->model('Auth_model');
-        $this->load->model('Log_model');
+        
         // $this->load->model('m_global');
         }
         // Get Data
@@ -35,6 +35,8 @@ class User extends REST_Controller {
                 $password = $this->get('password');
                 $token_aplikasi = $this->get('token_aplikasi');
                 $role = $this->get('role');
+                $id_aplikasi = $this->get('id_aplikasi');
+               
                 
                 // Validate the post data
                 if(!empty($email) && !empty($password) && !empty($token_aplikasi) ){
@@ -45,33 +47,46 @@ class User extends REST_Controller {
                         'email' => $email,
                         'password' => $password,
                         'token_aplikasi' => $token_aplikasi,
-                        'role' => $role
+                        'role' => $role,
+                        'id_aplikasi' => $id_aplikasi
                         
                     );
                     $this->session->set_userdata($user);
-                    $user = $this->Auth_model->login_api($email,$password,$token_aplikasi,$role);
+                    $user = $this->Auth_model->login_api($email,$password,$token_aplikasi,$role,$id_aplikasi);
+                    
                     // $user = $this->user->getRows($con);
                     
                     if($user){
                         // Set the response and exit
+                        $this->load->model('Log_model');
+                        $params = array(
+                        // 'id_aplikasi' => $this->session->userdata('id_aplikasi'),
+                        'username' => $email,
+                        'id_token_aplikasi' => $token_aplikasi,
+                        'ip' =>  $_SERVER['REMOTE_ADDR'],
+                        'keterangan' => 'successfully login',
+                        'waktu' =>date("Y-m-d H:i:s")
+                    );
+                    
+                    if($this->Log_model->add_lognew($params)){
+                        
                         $this->response([
                             'status' => TRUE,
                             'message' => 'User login successful.',
                             'data' => $user
-                        ], 
-                        REST_Controller::HTTP_OK);
-                        
-                        $params = array(
-                            'id_log' => $this->session->userdata('id'),
-                            'username' => $this->session->userdata('username'),
-							'keterangan' => 'successfully login',
-							'ip' =>  $_SERVER['REMOTE_ADDR'],
-							'waktu' =>date("Y-m-d H:i:s")
-							
-					        );
-
-                        
-			            $this->Log_model->add_log($params);
+                        ],
+                         
+                        REST_Controller::HTTP_OK); 
+                    }else{
+                        $this->response([
+                            'status' => TRUE,
+                            'message' => 'error log',
+                            'data' => $user
+                        ],
+                         
+                        REST_Controller::HTTP_OK); 
+                    }
+                         
                         
                     }else{
                         // Set the response and exit

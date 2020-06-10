@@ -70,16 +70,36 @@ class Log_model extends CI_Model
 	 *@param $params - data set to add record
 	 *
      */
-    function add_log($params){
-        $this->db->insert('t_log',$params);
-        $id = $this->db->insert_id();
-		$db_error = $this->db->error();
-		if (!empty($db_error['code'])){
-			echo 'Database error! Error Code [' . $db_error['code'] . '] Error: ' . $db_error['message'];
-			exit;
+	function logaktifitas(){
+		$this->db->select('*');
+            return $this->db->from('t_master_aplikasi')
+              ->join('t_log', 't_log.id_token_aplikasi=t_master_aplikasi.token_aplikasi')
+              ->get()
+			  ->result();
+			return $query->result_array();
+	}
+
+	function add_lognew($params)
+	{
+		
+		if($this->db->insert('t_log',$params)){
+			return true;
+
+		} else {
+			return false;
 		}
-		return $id;
-    }
+	}
+    // function add_log($params){
+		
+    //     $this->db->insert('t_log',$params);
+    //     $id = $this->db->insert_id();
+	// 	$db_error = $this->db->error();
+	// 	if (!empty($db_error['code'])){
+	// 		echo 'Database error! Error Code [' . $db_error['code'] . '] Error: ' . $db_error['message'];
+	// 		exit;
+	// 	}
+	// 	return $id;
+    // }
 	
     /** function to update log
 	 *@param $id - primary key to update record,$params - data set to add record
