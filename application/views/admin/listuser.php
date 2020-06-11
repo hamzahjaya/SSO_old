@@ -1,14 +1,16 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
-        
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script> -->
+ <section class="content">
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+       
         <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-13">
                     <div class="card">
 					<h2> Daftar User </h2>
-                        <div class="card-body"  style="background-color: white">
+                        <div class="card-body"  style="background-color: orange">
 						<div class="table-responsive">
 							<table class="table table-bordered datatables"  id="book-table" style="width:100%">
 								<thead >
@@ -79,11 +81,26 @@
                                         </table>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#book-table').DataTable();
+<script>
+        $('.datatables').DataTable();
+$('.hapus').click(function(){
+    idHapus = $(this).attr('id');
 });
-</script>
+
+$('#iya').click(function(){
+    $.ajax({
+        type: "POST",
+        url: base_url+'maember/user/delete',
+        data: {id_user},
+        dataType: "html",
+        success: function(res)
+        {
+            $('.modal').modal('toggle');
+            $('#list').html(res);
+        }
+    }); 
+}); 
+</script>       
                                     </div>
                                 </div>
                             </div>

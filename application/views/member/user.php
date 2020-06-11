@@ -1,9 +1,9 @@
 <div class="content">
 	<div class="container-fluid">
 		<div class="card">
-					<div class="card-header">
+					<!-- <div class="card-header">
 						<a href="<?php echo site_url('member/add') ?>" class="btn btn-primary btn-sm">Tambah Baru</a>
-					</div>
+					</div> -->
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-striped tabel" id="dataTable" width="100%" cellspacing="0">
