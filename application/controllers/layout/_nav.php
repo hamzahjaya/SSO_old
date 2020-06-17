@@ -25,7 +25,8 @@
 					<!-- Menu Footer-->
 					<li class="user-footer">
 						<div class="pull-left">
-							<a href="<?=base_url('admin/user/editadmin/'.$_SESSION['id_user'])?>" class="btn btn-default btn-flat"><i class="fa fa-user" aria-hidden="true"></i> Profil</a>
+						<a href="<?=base_url('member/user/editprofile/'.$_SESSION['id_user'])?>" class="btn btn-default btn-flat"><i class="fa fa-user" aria-hidden="true"></i> Profil</a>
+	
 						</div>
 						<div class="pull-right">
 							<a href="<?php echo base_url() ?>auth/logout" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>

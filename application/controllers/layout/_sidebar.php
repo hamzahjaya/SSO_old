@@ -7,9 +7,9 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-      <!--  <img src="<?php echo base_url('assets/upload/images/foto_profil/'.$this->session->userdata('photo')); ?>" class="img-circle"> -->
+			<!-- 	<img src="<?php echo base_url('assets/upload/images/foto_profil/'.$this->session->userdata('photo')); ?>" class="img-circle"> -->
                 <img alt="logo" src="<?= base_url() ?>/assets/upload/images/foto_profil/logo.png" />
-      </div>
+			</div>
       <div class="pull-left info">
         <p>Selamat datang</p>
         <!-- Status -->
@@ -31,25 +31,38 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Menu</li>
+      <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="<?= base_url('admin/user') ?>"><i class="fa fa-address-book-o"></i> <span>Tambah User</span></a></li>
-      <li><a href="<?= base_url('admin/user/list') ?>"><i class="fa fa-eye"></i> <span>Daftar user</span></a></li>
-      <li><a href="<?= base_url('admin/user/aplikasi') ?>"><i class="fa fa-desktop"></i> <span>Aplikasi</span></a></li>
-      <li><a href="<?= base_url('admin/user/listapp') ?>"><i class="fa fa-eye"></i> <span>Daftar Aplikasi</span></a></li>
-      <li><a href="<?= base_url('admin/user/kirimtoken') ?>"><i class="fa fa-paper-plane"></i> <span>KIRIM TOKEN KE USER</span></a></li>
+<!--       <li class="active"><a href="<?=base_url('member/user')?>"><i class="fa fa-link"></i> <span>User</span></a></li> -->
       <li class="treeview">
-        <a href="#"><i class="fa fa-tasks"></i> <span>Log Aktifitas</span>
-              <span class="pull-right-container">            
+        <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> 
+          <span>Menu Log Aktifitas</span>
+              <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
         <ul class="treeview-menu">
-        <li><a a href="<?= base_url('admin/user/log') ?>">Log aktifitas</a></li>
-          <li><a a href="<?= base_url('admin/user/lihatmintapassword') ?>">Permintaan password</a></li>
-        
+        <li><a href="<?=base_url('member/user/log')?>">Log Aktifitas</a></li>
+        <li><a href="<?=base_url('member/user')?>">User</a></li>
+        <!-- <li><a href="<?=base_url('member/waktu')?>">Waktu</a></li>
+        <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li> -->
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> 
+          <span>Menu Gagal Login</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+        <ul class="treeview-menu">
+        <li><a href="<?=base_url('user/log')?>">User</a></li>
+        <!-- <li><a href="<?=base_url('member/waktu')?>">Waktu</a></li>
+        <li><a href="<?= base_url('member/aplikasi/') ?>">Aplikasi</a></li> -->
+       </ul>
+       
+      
     </ul>
     <!-- /.sidebar-menu -->
   </section>
