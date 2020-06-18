@@ -57,15 +57,61 @@ class user extends CI_Controller
             
 		}
     }
-    
 
+    public function kirimtoken()
+    {
+        
+        // $data['user'] = $this->user_model->get_user('id_user', $_SESSION['id_user']);
+        $data['user'] = $this->user_model->usertoken();
+        $this->template->load('layouta/template', 'admin/kirimtoken', $data);
+        
+    }
+    
+    public function sendtoken()
+    {
+        $data['user'] = $this->user_model->usertoken();
+        
+        $email = $this->input->post('email');
+        $nama_aplikasi = $this->input->post('nama_aplikasi');
+        $token_aplikasi = $this->input->post('token_aplikasi');
+        
+
+
+ 
+		$data = array(
+			'email' => $email,
+            'nama_aplikasi' => $nama_aplikasi,
+            'token_aplikasi' => $token_aplikasi
+            );
+            $this->session->set_flashdata('berhasil', 'Berhasil dikirim');
+            $this->emailtoken($this->input->post('email'),$this->input->post('nama_aplikasi'),$this->input->post('token_aplikasi'));
+            redirect('admin/user/kirimtoken','refresh');
+            
+           
+		// $this->m_data->input_data($data,'user')
+    }
+
+    
+    public function emailtoken($email,$nama_aplikasi,$token_aplikasi)
+    {
+        $this->load->library('email');
+        $this->email->from('ssokpu2020@gmail.com', 'Admin SSO');
+        $this->email->to($email);
+        $this->email->subject('Permintaan token aplikasi');
+        $this->email->message('Dear : <b>'.$email. 
+        '</b><br>Berikut saya kirim kan token aplikasi : <b>'.$nama_aplikasi.'</b><br>
+        ');
+        $this->email->set_mailtype('html');
+        $this->email->send();
+    }
     public function send_email_verification($email, $token, $password)
     {
         $this->load->library('email');
         $this->email->from('ssokpu2020@gmail.com', 'Admin SSO');
         $this->email->to($email);
         $this->email->subject('Akun sso anda');
-        $this->email->message('email anda adalah : '.$email. '<br> Password anda adalah : '.$password. '<br
+        $this->email->message('Dear  <b>'.$email. '</b>
+        <br> Password anda adalah : '.$password. '<br>
         silahkan ubah password anda
         ');
         $this->email->set_mailtype('html');

@@ -1,12 +1,11 @@
- <section class="content">
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-<div class="content">
-        <div class="container-fluid">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    
+<h2 class="display-4" style="margin-bottom:25px;"> Daftar Aplikasi </h2>
+
+        <div class="container">
             <div class="row">
-                <div class="col-md-13">
+                <div class="col-md-15">
                     <div class="card">
-					<h2> Daftar Aplikasi </h2>
-					
 					<?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
@@ -14,20 +13,22 @@
 				<?php endif; ?>
                         <div class="card-body"  style="background-color: orange">
 						<div class="table-responsive">
-							<table id="example" class="table table-striped table-bordered"  style="width:100%">
+							<table class="table table-bordered datatables"  id="book-table" style="width:100%">
 								<thead >
 									<tr>
-										<th style="text-align:center">ID Apps </th>
-										<th style="text-align:center;width:100%;">Nama Aplikasi</th>
-										<th style="text-align:center">Token Aplikasi</th>
-										<th style="text-align:center"> Aksi </th>
+										<th>No</th>
+										<th >Nama Aplikasi</th>
+										<th >Token Aplikasi</th>
+										<th> Aksi </th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($t_master_aplikasi as $aplikasi): ?>
+									<?php 
+									$i = 1;
+									foreach ($t_master_aplikasi as $aplikasi): ?>
 									<tr>
 										<td>
-											<?php echo $aplikasi->id_aplikasi ?>
+											<?php echo $i ?>
 										</td>
 										<td>
 											<?php echo $aplikasi->nama_aplikasi ?>
@@ -37,17 +38,15 @@
 										</td>
 										<td>
 											 <a href="<?php echo site_url('admin/user/edit/'.$aplikasi->id_aplikasi) ?>"
-											 class="btn btn-small"><i class="fa fa-edit"></i> Edit Token</a>
+											 class="btn btn-small"><button class="btn btn-success" type="button"  title="Edit"><i class="fa fa-edit"></i>
+											 </button></a>
 											 <a href="<?php echo site_url('admin/user/deleteapp/'.$aplikasi->id_aplikasi) ?>"
-											 class="btn btn-small"><i class="fa fa-trash"></i> Delete</a>
-											 
+											 class="btn btn-small"><button class="btn btn-danger" type="button"  title="Delete"><i class="fa fa-trash"></i></button></a>
 										</td>
-										<td>
-											<a href="<?php echo base_url().'admin/user/download/'.$aplikasi->id_aplikasi; ?>"> download </a>
-										</td>	
 									</tr>
-                                                <?php endforeach; ?>
-
+											<?php 
+											$i++;
+											endforeach; ?>
                                             </tbody>
                                         </table>
 
@@ -58,20 +57,6 @@
 $('.hapus').click(function(){
     idHapus = $(this).attr('id');
 });
-
-$('#iya').click(function(){
-    $.ajax({
-        type: "POST",
-        url: base_url+'maember/user/delete',
-        data: {id_user},
-        dataType: "html",
-        success: function(res)
-        {
-            $('.modal').modal('toggle');
-            $('#list').html(res);
-        }
-    }); 
-}); 
 </script>       
                                     </div>
                                 </div>

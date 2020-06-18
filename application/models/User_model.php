@@ -23,6 +23,18 @@ class User_Model extends CI_Model
         return $ip;
     }
 
+    function usertoken(){
+		// $this->db->select('*');
+        //     return $this->db->from('t_user')
+        //       ->join('t_master_aplikasi', 't_user.id_user=t_master_aplikasi.id_aplikasi')
+        //       ->get()
+		// 	  ->result();
+        // 	return $query->result_array();
+        
+        $query = $this->db->get('t_master_aplikasi');
+		return $query;
+	}
+
     public function reg()
     { 
         $this->load->helper('string');
@@ -105,7 +117,7 @@ class User_Model extends CI_Model
         $this->load->helper('string');
         $this->load->helper('form');
         
-        $_SESSION['token_aplikasi'] = random_string('alnum', 90);
+        $_SESSION['token_aplikasi'] = random_string('alnum', 20);
 
         $token_aplikasi['token_aplikasi'] = $this->input->get('token_aplikasi');
         $data = [

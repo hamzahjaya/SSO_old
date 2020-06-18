@@ -71,12 +71,24 @@ class Log_model extends CI_Model
 	 *
      */
 	function logaktifitas(){
+		$role = $_SESSION ['role'];
 		$this->db->select('*');
+		if ($role =='admin'){
             return $this->db->from('t_master_aplikasi')
               ->join('t_log', 't_log.id_token_aplikasi=t_master_aplikasi.token_aplikasi')
               ->get()
 			  ->result();
-			return $query->result_array();
+		}
+		else {
+				$id_user =$_SESSION ['id_user'];
+				return $this->db->from('t_master_aplikasi')
+              ->join('t_log', 't_log.id_token_aplikasi=t_master_aplikasi.token_aplikasi')
+              ->join('t_user', 't_user.id_user=t_user.id_user')
+              
+              ->where('id_user',$id_user)
+              ->get()
+			  ->result();
+			}	
 	}
 
 	function add_lognew($params)
