@@ -4,9 +4,22 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
        
+<<<<<<< HEAD
 <h2 class="display-4" style="margin-bottom:25px;"> Kirim Token Aplikasi</h2>
         
                       
+=======
+<h2> Kirim Token Aplikasi</h2>
+        <div class="content">
+		
+        <div class="container-fluid">
+			<div class="row">
+			
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body" >
+						<div class="table-responsive">
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
                         <?php
             if ($this->session->flashdata('berhasil')) {
                 ?>
@@ -18,13 +31,21 @@
             ?>
             <form class="form-horizontal" action="<?php echo base_url('admin/user/sendtoken'); ?>" method="POST">
 		<div class="form-group">
+<<<<<<< HEAD
 			<div class="col-sm-12">
+=======
+			<div class="col-sm-10">
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
             <label for="Email" >Email</label>
 			<input type="email" class="form-control" placeholder="Email" name="email"> 
 			</div>
 		</div>
 		<div class="form-group">
+<<<<<<< HEAD
 			<div class="col-sm-12">
+=======
+			<div class="col-sm-10">
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
             <label for="Nama Aplikasi" >Nama Aplikasi</label>
             <select name="nama_aplikasi" class="form-control" id="nama_aplikasi">
                 <option> - Pilih Aplikasi -</option>

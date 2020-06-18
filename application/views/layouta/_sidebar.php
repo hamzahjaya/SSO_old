@@ -37,7 +37,11 @@
       <li><a href="<?= base_url('admin/user/list') ?>"><i class="fa fa-eye"></i> <span>Daftar user</span></a></li>
       <li><a href="<?= base_url('admin/user/aplikasi') ?>"><i class="fa fa-desktop"></i> <span>Aplikasi</span></a></li>
       <li><a href="<?= base_url('admin/user/listapp') ?>"><i class="fa fa-eye"></i> <span>Daftar Aplikasi</span></a></li>
+<<<<<<< HEAD
       <li><a href="<?= base_url('admin/user/kirimtoken') ?>"><i class="fa fa-paper-plane"></i> <span>Kirim Token Aplikasi</span></a></li>
+=======
+      <li><a href="<?= base_url('admin/user/kirimtoken') ?>"><i class="fa fa-paper-plane"></i> <span>KIRIM TOKEN KE USER</span></a></li>
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
       <li class="treeview">
         <a href="#"><i class="fa fa-tasks"></i> <span>Log Aktifitas</span>
               <span class="pull-right-container">            

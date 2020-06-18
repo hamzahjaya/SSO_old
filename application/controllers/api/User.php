@@ -34,7 +34,12 @@ class User extends REST_Controller {
                 $email = $this->get('email');
                 $password = $this->get('password');
                 $token_aplikasi = $this->get('token_aplikasi');
+<<<<<<< HEAD
             
+=======
+
+                
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
                
                 
                 // Validate the post data
@@ -45,8 +50,15 @@ class User extends REST_Controller {
                     $user = array(
                         'email' => $email,
                         'password' => $password,
+<<<<<<< HEAD
                         'token_aplikasi' => $token_aplikasi
                         
+=======
+                        'token_aplikasi' => $token_aplikasi,
+                        'role' => '1'
+                        
+                      
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
                         
                     );
                     $this->session->set_userdata($user);

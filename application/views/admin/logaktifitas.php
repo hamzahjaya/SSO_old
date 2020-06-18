@@ -1,4 +1,7 @@
+<section class="content">
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
+<<<<<<< HEAD
                 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
 
@@ -7,6 +10,14 @@
         <div class="row">
         <div class="col-md-13">
         <div class="card">
+=======
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-13">
+        <div class="card">
+                <h2> Log Aktifitas </h2>
+>>>>>>> 621239a07995e371facd0f82175f55c621b3624e
                     <?php if ($this->session->flashdata('success')): ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo $this->session->flashdata('success'); ?>
