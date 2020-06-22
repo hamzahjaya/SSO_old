@@ -34,8 +34,7 @@ class User extends REST_Controller {
                 $email = $this->get('email');
                 $password = $this->get('password');
                 $token_aplikasi = $this->get('token_aplikasi');
-                $role = $this->get('role');
-                $id_aplikasi = $this->get('id_aplikasi');
+            
                
                 
                 // Validate the post data
@@ -46,24 +45,25 @@ class User extends REST_Controller {
                     $user = array(
                         'email' => $email,
                         'password' => $password,
-                        'token_aplikasi' => $token_aplikasi,
-                        'role' => $role,
-                        'id_aplikasi' => $id_aplikasi
+                        'token_aplikasi' => $token_aplikasi
+			                        
                         
                     );
                     $this->session->set_userdata($user);
-                    $user = $this->Auth_model->login_api($email,$password,$token_aplikasi,$role,$id_aplikasi);
+                    $user = $this->Auth_model->login_api($email,$password,$token_aplikasi);
                     
                     // $user = $this->user->getRows($con);
                     
+
                     if($user){
                         // Set the response and exit
                         $this->load->model('Log_model');
+
                         $params = array(
                         // 'id_aplikasi' => $this->session->userdata('id_aplikasi'),
                         'username' => $email,
-                        'id_token_aplikasi' => $token_aplikasi,
-                        'ip' =>  $_SERVER['REMOTE_ADDR'],
+		        'id_token_aplikasi' => $token_aplikasi,
+			'ip' =>  $_SERVER['REMOTE_ADDR'],
                         'keterangan' => 'successfully login',
                         'waktu' =>date("Y-m-d H:i:s")
                     );
@@ -89,6 +89,8 @@ class User extends REST_Controller {
                          
                         
                     }else{
+
+                      
                         // Set the response and exit
                         //BAD_REQUEST (400) being the HTTP response code
                         $this->response([

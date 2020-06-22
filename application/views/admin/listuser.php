@@ -1,16 +1,16 @@
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script> -->
- <section class="content">
+ <!-- <section class="content"> -->
                 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
        
-        <div class="content">
-        <div class="container-fluid">
+        <!-- <div class="content"> -->
+		<h2 class="display-4" style="margin-bottom:25px;"> Daftar User </h2>
+        <div class="container">
             <div class="row">
-                <div class="col-md-13">
-                    <div class="card">
-					<h2> Daftar User </h2>
-                        <div class="card-body"  style="background-color: orange">
+                <div class="col-md-15">
+                    <div >
+                        <div   style="background-color: orange">
 						<div class="table-responsive">
 							<table class="table table-bordered datatables"  id="book-table" style="width:100%">
 								<thead >
@@ -23,9 +23,7 @@
 										<th>no hp</th>
                                         <th>nik</th>
                                         <th>nip</th>
-                                        <th>active</th>
 										<th>Action</th>
-										
 									</tr>
 								</thead>
 								<tbody style="text-align:justify;width:100%;">
@@ -62,15 +60,14 @@
                                         <td>
 											<?php echo $user->nip ?>
 										</td>
-                                        <td>
-											<?php echo $user->active ?>
-										</td>
-										
+                                       										
 										<td>
 											 <a href="<?php echo site_url('admin/user/edituser/'.$user->id_user) ?>"
-											 class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+											 > 
+											 <button class="btn btn-success" type="button"  title="Edit"><i class="fa fa-edit"></i>
+											 </button></a>
 											  <a href="<?php echo site_url('admin/user/deleteuser/'.$user->id_user) ?>"
-											 class="btn btn-small"><i class="fa fa-trash"></i> Hapus</a> 
+											 ><button class="btn btn-danger" type="button"  title="Delete"><i class="fa fa-trash"></i></button></a> 
 										</td>
 									</tr>
 												<?php 

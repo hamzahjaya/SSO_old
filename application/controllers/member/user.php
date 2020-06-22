@@ -91,9 +91,10 @@ class User extends CI_Controller
 				$this->session->set_flashdata('success','password Berhasil diubah');
 				redirect(base_url('member/user'));
 	} 
-   public function log(){
+   public function loguser(){
     // $limit = 10;
-    $data['log'] = $this->log_model->logaktifitas();
+    $data['log'] = $this->log_model->loguser();
+    
     //pagination
     // $config['base_url'] = site_url('admin/log/index');
     // $config['total_rows'] = $this->log_model->get_count_log();

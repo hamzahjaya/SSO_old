@@ -71,12 +71,36 @@ class Log_model extends CI_Model
 	 *
      */
 	function logaktifitas(){
+	
 		$this->db->select('*');
+		
             return $this->db->from('t_master_aplikasi')
               ->join('t_log', 't_log.id_token_aplikasi=t_master_aplikasi.token_aplikasi')
               ->get()
 			  ->result();
-			return $query->result_array();
+		
+		// else {
+		// 		$id_user =$_SESSION ['id_user'];
+		// 		return $this->db->from('t_master_aplikasi')
+        //       ->join('t_log', 't_log.id_token_aplikasi=t_master_aplikasi.token_aplikasi')
+        //       ->join('t_user', 't_user.id_user=t_user.id_user')
+              
+        //       ->where('id_user',$id_user)
+        //       ->get()
+		// 	  ->result();
+		// 	}	
+	}
+
+	function loguser(){
+		$email = $_SESSION['email'];
+		
+		$this->db->select('*');
+		return $this->db->from('t_master_aplikasi')
+		->join('t_log','t_log.id_token_aplikasi=t_master_aplikasi.token_aplikasi')
+		->join('t_user','t_user.email=t_user.email')
+		->WHERE('t_user.email',$email)
+		->get()
+		->result();
 	}
 
 	function add_lognew($params)

@@ -19,7 +19,7 @@
          
          if($this->form_validation->run() == FALSE) {  
              $data['title'] = 'Halaman Reset Password';  
-             $this->load->view('authentication/Lupa',$data);  
+             $this->load->view('authentication/lupa',$data);  
          }else{  
              $email = $this->input->post('email');   
              $clean = $this->security->xss_clean($email);  

@@ -1,6 +1,4 @@
      
-
-
                  <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
@@ -9,11 +7,12 @@
 
 		<h2 class="login-box-msg">Pendaftaran Akun SSO</h2>
         
+
 		<?= form_open('admin/user/register') ?>
 
         <div class="form-group has-feedback">
 			<input type="text" name="username" class="form-control" required placeholder="Username">
-			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			<span class="glyphicon glyphicon-user form-control-feedback"></span>
 			<?php echo form_error('Username','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
 				
@@ -43,36 +42,38 @@
 		
         <div class="form-group has-feedback">
 			<input type="text" name="no_hp" class="form-control" required placeholder="No hp">
-			<span class="glyphicon glyphicon-user form-control-feedback"></span>
+			<span class="glyphicon glyphicon-phone form-control-feedback"></span>
 			<?php echo form_error('No_hp','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
         
 
         <div class="form-group has-feedback">
-			<input type="text" name="no_sk" class="form-control" required placeholder="no SK">
+			<input type="text" name="no_sk" class="form-control" required placeholder="No SK">
 			<span class="glyphicon glyphicon-book form-control-feedback"></span>
 			<?php echo form_error('no_sk','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
 
         
         <div class="form-group has-feedback">
-			<input type="text" name="nik" class="form-control" required placeholder="nik">
+			<input type="text" name="nik" class="form-control" required placeholder="NIK">
 			<span class="glyphicon glyphicon-book form-control-feedback"></span>
 			<?php echo form_error('nik','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
 
         
         <div class="form-group has-feedback">
-			<input type="text" name="nip" class="form-control" required placeholder="nip">
+			<input type="text" name="nip" class="form-control" required placeholder="NIP">
 			<span class="glyphicon glyphicon-book form-control-feedback"></span>
 			<?php echo form_error('nip','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
-		<div class="form-group has-feedback"> Role
-			<select id="role" name="role">
+
+		<div class="form-group has-feedback">
+		<label class="input-group-text" for="role">Role</label>
+			<select class="custom-select"  id="role" name="role">
 			<option value="admin">admin</option>
 			<option value="user">user</option>
 			</select>
-			<?php echo form_error('Username','<div class="text-danger"><small>','</small></div>') ;?>
+			<?php echo form_error('role','<div class="text-danger"><small>','</small></div>') ;?>
 		</div>
 
 		<div class="row">
